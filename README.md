@@ -14,12 +14,12 @@ This project is a semantic search engine for distributed systems research papers
 - Fully functional vector search pipeline for PDF documents using FAISS
 - Validate the retrival correctness by retriving top 3 releavent search results
 
-### Phase 2 - From the Scratch Implementation
+#### Phase 2 - From the Scratch Implementation
 - Replace FAISS with manual cosine similarity for text extraction
 - Implement HNSW
 - Benchmark performances, recall, latency, memory usage
 
-### Phase 3 - Multimodal Search
+#### Phase 3 - Multimodal Search
 Extend this search engine for images
 
 ## Steps to Run this project 
