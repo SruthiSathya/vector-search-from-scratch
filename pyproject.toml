@@ -1,0 +1,23 @@
+[project]
+name = "vector-search-from-scratch"
+version = "0.1.0"
+description = "Exact vector search over research papers"
+authors = [
+    {name = "Sruthi Sathyamoorthy",email = "sruthi@Sruthis-MacBook-Pro.local"}
+]
+requires-python = "3.12.12"
+dependencies = [
+    "pymupdf (>=1.27.1,<2.0.0)",
+    "pypdf2 (>=3.0.1,<4.0.0)",
+    "sentence-transformers (>=5.2.3,<6.0.0)",
+    "langchain (>=1.2.10,<2.0.0)",
+    "faiss-cpu (>=1.13.2,<2.0.0)",
+    "numpy (>=2.4.2,<3.0.0)",
+    "tqdm (>=4.67.3,<5.0.0)",
+    "langchain-text-splitters (>=1.1.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
