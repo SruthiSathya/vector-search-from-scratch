@@ -15,12 +15,13 @@ This project is a semantic search engine for distributed systems research papers
 - Validate the retrival correctness by retriving top 3 releavent search results
 
 #### Phase 2 - From the Scratch Implementation
+#### Phase 2 - From the Scratch Implementation
 - Replace FAISS with manual cosine similarity for text extraction
 - Implement HNSW
 - Benchmark performances, recall, latency, memory usage
 
 #### Phase 3 - Multimodal Search
-Extend this search engine for images
+Extend this search engine for images, video and audio
 
 ## Steps to Run this project 
 
