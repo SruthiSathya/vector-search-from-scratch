@@ -1,3 +1,5 @@
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
 import faiss
 import numpy as np
 
@@ -23,7 +25,14 @@ class VectorIndexHNSW:
         embeddings: numpy array of shape (num_vectors, dimension)
         chunks: list of text corresponding to each vector
         """
-        embeddings = np.array(embeddings).astype('float32')
+        embeddings = np.asarray(embeddings, dtype=np.float32)
+
+        if embeddings.ndim != 2:
+            raise ValueError("Embeddings must be 2D")
+
+        if embeddings.shape[1] != self.dimension:
+            raise ValueError("Embedding dimension mismatch")
+
         self.index.add(embeddings)
         self.text_chunks.extend(chunks)
 
@@ -32,11 +41,13 @@ class VectorIndexHNSW:
         Search the index using HNSW for top_k nearest neighbors (L2 distance)
         query_embedding: list or numpy array of length = dimension
         """
-        query_embedding = np.array([query_embedding]).astype('float32')
+        query_embedding = np.asarray(query_embedding, dtype=np.float32).reshape(1, -1)
         distances, indices = self.index.search(query_embedding, top_k)
 
         results = []
         for idx in indices[0]:
+            if idx == -1:
+                continue
             results.append(self.text_chunks[idx])
 
         return results

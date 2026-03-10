@@ -114,3 +114,20 @@ class VectorIndexFromScratchImplementation:
         # Smaller distance = more similar
         distances.sort(key=lambda x: x[0])
         return [self.text_chunks[i] for _, i in distances[:top_k]]
+
+    def search(self, query_embedding, top_k=5, metric="cosine"):
+        """
+        Unified search interface used by benchmarks and query loops.
+        """
+
+        if metric == "cosine":
+            return self.search_cosine(query_embedding, top_k)
+
+        elif metric == "l2":
+            return self.search_l2(query_embedding, top_k)
+
+        elif metric == "l1":
+            return self.search_l1(query_embedding, top_k)
+
+        else:
+            raise ValueError(f"Unknown metric: {metric}")
